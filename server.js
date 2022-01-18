@@ -30,13 +30,13 @@ mongoose.connection
 ///////////////////////////////
 // MODELS
 ////////////////////////////////
-const AnthemSchema = new mongoose.Schema({
+const ApartmentsSchema = new mongoose.Schema({
   unit: String,
   media: String,
   description: String,
 })
 
-const Anthem = mongoose.model("Anthem", AnthemSchema)
+const Apartments = mongoose.model("Apartments", ApartmentsSchema)
 
 ///////////////////////////////
 // MiddleWare
@@ -54,10 +54,10 @@ app.get("/", (req, res) => {
 })
 
 // PEOPLE INDEX ROUTE
-app.get("/anthem", async (req, res) => {
+app.get("/apartments", async (req, res) => {
   try {
     // send all people
-    res.json(await Anthem.find({}))
+    res.json(await Apartments.find({}))
   } catch (error) {
     //send error
     res.status(400).json(error)
@@ -65,10 +65,10 @@ app.get("/anthem", async (req, res) => {
 })
 
 // PEOPLE CREATE ROUTE
-app.post("/anthem", async (req, res) => {
+app.post("/apartments", async (req, res) => {
   try {
     // send all people
-    res.json(await Anthem.create(req.body))
+    res.json(await Apartments.create(req.body))
   } catch (error) {
     //send error
     res.status(400).json(error)
@@ -76,10 +76,10 @@ app.post("/anthem", async (req, res) => {
 })
 
 // PEOPLE DELETE ROUTE
-app.delete("/anthem/:id", async (req, res) => {
+app.delete("/apartments/:id", async (req, res) => {
   try {
     // send all people
-    res.json(await Anthem.findByIdAndDelete(req.params.id))
+    res.json(await Apartments.findByIdAndDelete(req.params.id))
   } catch (error) {
     //send error
     res.status(400).json(error)
@@ -87,11 +87,11 @@ app.delete("/anthem/:id", async (req, res) => {
 })
 
 // PEOPLE UPDATE ROUTE
-app.put("/anthem/:id", async (req, res) => {
+app.put("/apartments/:id", async (req, res) => {
   try {
     // send all people
     res.json(
-      await Anthem.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      await Apartments.findByIdAndUpdate(req.params.id, req.body, { new: true })
     )
   } catch (error) {
     //send error
